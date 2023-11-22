@@ -17,12 +17,12 @@ public class WebPageTitleTest extends TestBase {
     @Tag("Title")
     public void selenium_page_title() {
         logger.info(">>>>> STARTING TEST <<<<<");
-        driver.get(config.getAppUrl());
+        driver.get(configurationReader.getActiveEnvironment().getAppUrl());
 
-        final String expectedTitle = config.getWebsiteTitle();
+        final String expectedTitle = activeEnvironment.getWebsiteTitle();
         String actualTitle = driver.getTitle();
 
-        logger.info("URL {}", config.getAppUrl());
+        logger.info("URL {}", activeEnvironment.getAppUrl());
         logger.info("Actual Title {}", actualTitle);
         logger.info("Expected Title {}", expectedTitle);
 

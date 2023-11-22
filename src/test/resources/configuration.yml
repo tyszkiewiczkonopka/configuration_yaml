@@ -1,20 +1,24 @@
-environment:
-  defaultEnvironment: test
+environments:
+  dev:
+    envName: dev
+    active: true
+    appUrl: https://www.selenium.dev/
+    websiteTitle: Selenium
 
   test:
     envName: test
-    active: true
+    active: false
+    appUrl: https://www.selenium.dev/
+    websiteTitle: Selenium
 
   prod:
     envName: prod
     active: false
+    appUrl: https://www.selenium.dev/
+    websiteTitle: Selenium
 
 browser:
   browserName: chrome
   attachScreenshot: false
   headless: true
-  webelementTimeout: 60
-
-test_data:
-  appUrl: https://www.selenium.dev/
-  websiteTitle: Selenium
+  webElementTimeout: 60

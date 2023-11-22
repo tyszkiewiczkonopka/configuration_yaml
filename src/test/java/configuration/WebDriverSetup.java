@@ -1,7 +1,5 @@
-package configuration.model;
+package configuration;
 
-import configuration.ConfigReader;
-import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,26 +8,38 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 
-public class BrowserProperties {
-    private final String browserName;
-    @Getter
-    private final WebDriver driver;
 
-    public BrowserProperties(String browserName) {
-        this.browserName = browserName;
-        this.driver = createDriver();
+public class WebDriverSetup {
+    private WebDriver driver;
+    private String browserName;
+
+    public WebDriverSetup() {
     }
 
-    private WebDriver createDriver() {
-        if (this.browserName == null) {
+    public WebDriverSetup(String browserName) {
+        this.browserName = browserName;
+        this.driver = createDriver(browserName);
+    }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public String getBrowserName() {
+        return browserName;
+    }
+
+
+    private WebDriver createDriver(String browserName) {
+        if (browserName == null) {
             throw new IllegalArgumentException("Browser name cannot be null.");
         }
 
-        return switch (this.browserName.toLowerCase()) {
+        return switch (browserName.toLowerCase()) {
             case "chrome" -> createChromeDriver();
             case "firefox" -> createFirefoxDriver();
             case "ie" -> createInternetExplorerDriver();
-            default -> throw new IllegalArgumentException("Invalid browser specified: " + this.browserName);
+            default -> throw new IllegalArgumentException("Invalid browser specified: " + browserName);
         };
     }
 
