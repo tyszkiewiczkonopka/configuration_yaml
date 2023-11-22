@@ -1,4 +1,6 @@
 environment:
+  defaultEnvironment: test
+
   test:
     envName: test
     active: true
@@ -8,10 +10,10 @@ environment:
     active: false
 
 browser:
-  browser_name: chrome
-  attach_screenshot: false
+  browserName: chrome
+  attachScreenshot: false
   headless: true
-  webelement_timeout: 60
+  webelementTimeout: 60
 
 test_data:
   appUrl: https://www.selenium.dev/

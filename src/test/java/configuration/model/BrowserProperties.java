@@ -1,5 +1,7 @@
-package configuration;
+package configuration.model;
 
+import configuration.ConfigReader;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,15 +10,21 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
 
-public class BrowserConfig {
+public class BrowserProperties {
     private final String browserName;
+    @Getter
+    private final WebDriver driver;
 
-    public BrowserConfig(String browserName) {
+    public BrowserProperties(String browserName) {
         this.browserName = browserName;
-        WebDriver driver = createDriver();
+        this.driver = createDriver();
     }
 
     private WebDriver createDriver() {
+        if (this.browserName == null) {
+            throw new IllegalArgumentException("Browser name cannot be null.");
+        }
+
         return switch (this.browserName.toLowerCase()) {
             case "chrome" -> createChromeDriver();
             case "firefox" -> createFirefoxDriver();
