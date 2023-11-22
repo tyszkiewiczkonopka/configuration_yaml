@@ -19,8 +19,8 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        WebDriverSetup webDriverSetup = new WebDriverSetup(configurationReader.getBrowser().getBrowserName());
         activeEnvironment = configurationReader.getActiveEnvironment();
+        WebDriverSetup webDriverSetup = new WebDriverSetup(configurationReader.getBrowser().getBrowserName());
         driver = webDriverSetup.getDriver();
         logger.debug("Driver initialized");
     }

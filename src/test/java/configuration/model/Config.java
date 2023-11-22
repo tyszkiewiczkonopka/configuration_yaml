@@ -1,8 +1,6 @@
 package configuration.model;
 
-
 import java.util.Map;
-
 
 public class Config {
     private Map<String, Environment> environments;

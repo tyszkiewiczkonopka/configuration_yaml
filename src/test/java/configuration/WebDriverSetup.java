@@ -25,10 +25,6 @@ public class WebDriverSetup {
         return driver;
     }
 
-    public String getBrowserName() {
-        return browserName;
-    }
-
 
     private WebDriver createDriver(String browserName) {
         if (browserName == null) {

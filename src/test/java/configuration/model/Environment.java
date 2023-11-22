@@ -1,6 +1,5 @@
 package configuration.model;
 
-
 public class Environment {
 
     private String envName;
