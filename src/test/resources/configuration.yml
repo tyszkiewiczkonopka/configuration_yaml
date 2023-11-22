@@ -1,0 +1,18 @@
+environment:
+  test:
+    envName: test
+    active: true
+
+  prod:
+    envName: prod
+    active: false
+
+browser:
+  browser_name: chrome
+  attach_screenshot: false
+  headless: true
+  webelement_timeout: 60
+
+test_data:
+  appUrl: https://www.selenium.dev/
+  websiteTitle: Selenium
