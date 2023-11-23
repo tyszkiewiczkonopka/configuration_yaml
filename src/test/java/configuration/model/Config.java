@@ -1,7 +1,10 @@
 package configuration.model;
 
+import lombok.Getter;
+
 import java.util.Map;
 
+@Getter
 public class Config {
     private Map<String, Environment> environments;
     private Browser browser;
@@ -9,11 +12,4 @@ public class Config {
     public Config() {
     }
 
-    public Map<String, Environment> getEnvironments() {
-        return environments;
-    }
-
-    public Browser getBrowser() {
-        return browser;
-    }
 }

@@ -1,7 +1,7 @@
 environments:
   dev:
     envName: dev
-    active: true
+    active: false
     appUrl: https://www.selenium.dev/
     websiteTitle: Selenium
 
@@ -9,14 +9,14 @@ environments:
   test:
     envName: test
     active: false
-    appUrl: https://www.selenium.dev/
-    websiteTitle: Selenium
+    appUrl: https://sii.pl/
+    websiteTitle: Rozwiązania i usługi IT, inżynierii i BPO - Sii Polska
 
   prod:
     envName: prod
-    active: false
-    appUrl: https://www.selenium.dev/
-    websiteTitle: Selenium
+    active: true
+    appUrl: https://www.google.pl/
+    websiteTitle: Google
 
 browser:
   browserName: chrome

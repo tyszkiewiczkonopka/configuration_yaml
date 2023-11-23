@@ -1,5 +1,6 @@
 package configuration;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,21 +11,15 @@ import org.openqa.selenium.ie.InternetExplorerOptions;
 
 
 public class WebDriverSetup {
+    @Getter
     private WebDriver driver;
     private String browserName;
 
-    public WebDriverSetup() {
-    }
 
     public WebDriverSetup(String browserName) {
         this.browserName = browserName;
         this.driver = createDriver(browserName);
     }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
 
     private WebDriver createDriver(String browserName) {
         if (browserName == null) {

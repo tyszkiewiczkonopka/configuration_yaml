@@ -1,5 +1,8 @@
 package configuration.model;
 
+import lombok.Getter;
+
+@Getter
 public class Environment {
 
     private String envName;
@@ -10,19 +13,4 @@ public class Environment {
     public Environment() {
     }
 
-    public String getEnvName() {
-        return envName;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public String getAppUrl() {
-        return appUrl;
-    }
-
-    public String getWebsiteTitle() {
-        return websiteTitle;
-    }
 }

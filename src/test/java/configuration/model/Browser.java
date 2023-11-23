@@ -1,5 +1,8 @@
 package configuration.model;
 
+import lombok.Getter;
+
+@Getter
 public class Browser {
     String browserName;
     boolean attachScreenshot;
@@ -10,19 +13,4 @@ public class Browser {
 
     }
 
-    public String getBrowserName() {
-        return browserName;
-    }
-
-    public boolean isAttachScreenshot() {
-        return attachScreenshot;
-    }
-
-    public boolean isHeadless() {
-        return headless;
-    }
-
-    public int getWebElementTimeout() {
-        return webElementTimeout;
-    }
 }
