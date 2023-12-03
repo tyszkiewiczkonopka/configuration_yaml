@@ -15,14 +15,17 @@ public class WebPageTitleTest extends TestBase {
     @Tag("Title")
     public void website_title_should_be_as_in_configuration_file() {
         log.info(">>>>> STARTING TEST <<<<<");
-        driver.get(configurationReader.getActiveEnvironment().getAppUrl());
+        String appUrl = System.getProperty("appUrl");
+        driver.get(appUrl);
 
-        final String expectedTitle = activeEnvironment.getWebsiteTitle();
+        final String expectedTitle = System.getProperty("websiteTitle");
         String actualTitle = driver.getTitle();
 
-        log.info("URL {}", activeEnvironment.getAppUrl());
-        log.info("Actual Title {}", actualTitle);
-        log.info("Expected Title {}", expectedTitle);
+        log.info("URL: {}", appUrl);
+        log.info("Actual Title: {}", actualTitle);
+        log.info("Expected Title: {}", expectedTitle);
+        log.info("yetAnotherParam: {}", System.getProperty("yetAnotherParam"));
+        log.info("isItTheBestBrowser: {}", System.getProperty("browser.isItTheBestBrowser"));
 
         assertThat(actualTitle, equalTo(expectedTitle));
     }

@@ -2,7 +2,6 @@ package configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import configuration.model.Browser;
 import configuration.model.Config;
 import configuration.model.Environment;
 import lombok.Getter;
@@ -12,19 +11,14 @@ import org.openqa.selenium.InvalidArgumentException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Getter
 public class ConfigurationReader {
     private static final String FILE_PATH = "src/test/resources/configuration.yml";
-    private Environment activeEnvironment;
-    private Browser browser;
 
-    public ConfigurationReader() {
-        readYamlFile();
-    }
-
-    private void readYamlFile() {
+    public void readYamlFile() {
         ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 
         try {
@@ -36,14 +30,19 @@ public class ConfigurationReader {
                 log.error("Error while parsing for active environments.");
                 throw new InvalidArgumentException("There can be only one active environment");
             }
-            activeEnvironment = environments.get(0);
-            browser = config.getBrowser();
 
+            writeSystemProperties(environments.get(0).getProperties(), "");
+            writeSystemProperties(config.getBrowser().getProperties(), "browser.");
         } catch (IOException e) {
             log.error("Error reading YAML file: {}", e.getMessage(), e);
             throw new RuntimeException("Error reading YAML file: " + e.getMessage());
         }
     }
 
+    private void writeSystemProperties(Map<String, Object> properties, String prefix) {
+        properties.forEach((propertyKey, propertyValue) -> {
+            System.setProperty(prefix + propertyKey, propertyValue.toString());
+        });
+    }
 }
 
